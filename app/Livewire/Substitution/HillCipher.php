@@ -126,10 +126,10 @@ class HillCipher extends Component
         }
         
         $inverse = [];
-        $inverse[0][0] = ($this->keyMatrix[1][1] * $detInv) % 26;
-        $inverse[0][1] = (-$this->keyMatrix[0][1] * $detInv + 26) % 26;
-        $inverse[1][0] = (-$this->keyMatrix[1][0] * $detInv + 26) % 26;
-        $inverse[1][1] = ($this->keyMatrix[0][0] * $detInv) % 26;
+        $inverse[0][0] = (($this->keyMatrix[1][1] * $detInv) % 26 + 26) % 26;
+        $inverse[0][1] = ((-$this->keyMatrix[0][1] * $detInv) % 26 + 26) % 26;
+        $inverse[1][0] = ((-$this->keyMatrix[1][0] * $detInv) % 26 + 26) % 26;
+        $inverse[1][1] = (($this->keyMatrix[0][0] * $detInv) % 26 + 26) % 26;
         
         return $inverse;
     }
