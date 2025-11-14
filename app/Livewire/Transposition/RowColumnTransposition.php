@@ -67,7 +67,7 @@ class RowColumnTransposition extends Component
             $text .= 'X';
         }
         
-        $rows = strlen($text) / $keyLength;
+        $rows = intdiv(strlen($text), $keyLength);
         $matrix = [];
         
         // Fill matrix row by row
@@ -97,13 +97,13 @@ class RowColumnTransposition extends Component
         
         $text = str_replace(' ', '', strtoupper($this->ciphertext));
         $keyLength = strlen($this->key);
-        $rows = strlen($text) / $keyLength;
         
         if (strlen($text) % $keyLength !== 0) {
             $this->addError('ciphertext', 'Ciphertext length must be divisible by key length.');
             return;
         }
         
+        $rows = intdiv(strlen($text), $keyLength);
         $matrix = array_fill(0, $rows, array_fill(0, $keyLength, ''));
         
         // Fill matrix column by column in key order
