@@ -38,7 +38,7 @@ class MonoalphabeticCipher extends Component
         $cipherAlphabet = strtoupper($this->key);
         
         // Check if key has all 26 unique letters
-        if (strlen(array_unique(str_split($cipherAlphabet))) !== 26) {
+        if (count(array_unique(str_split($cipherAlphabet))) !== 26) {
             $this->addError('key', 'Key must contain all 26 unique letters.');
             return;
         }
@@ -67,7 +67,7 @@ class MonoalphabeticCipher extends Component
         $cipherAlphabet = strtoupper($this->key);
         
         // Check if key has all 26 unique letters
-        if (strlen(array_unique(str_split($cipherAlphabet))) !== 26) {
+        if (count(array_unique(str_split($cipherAlphabet))) !== 26) {
             $this->addError('key', 'Key must contain all 26 unique letters.');
             return;
         }
