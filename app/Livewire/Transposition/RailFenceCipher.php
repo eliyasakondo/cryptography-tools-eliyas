@@ -36,14 +36,15 @@ class RailFenceCipher extends Component
         for ($i = 0; $i < strlen($text); $i++) {
             $fence[$rail][] = $text[$i];
             
+            // Change direction at boundaries
+            if ($rail === 0) {
+                $direction = 1;
+            } elseif ($rail === $this->rails - 1) {
+                $direction = -1;
+            }
+            
             // Move to next rail
             $rail += $direction;
-            
-            // Change direction at boundaries
-            if ($rail === $this->rails || $rail < 0) {
-                $direction *= -1;
-                $rail += 2 * $direction;
-            }
         }
         
         $result = '';
@@ -71,14 +72,15 @@ class RailFenceCipher extends Component
         for ($i = 0; $i < $length; $i++) {
             $fence[$rail][$i] = true;
             
+            // Change direction at boundaries
+            if ($rail === 0) {
+                $direction = 1;
+            } elseif ($rail === $this->rails - 1) {
+                $direction = -1;
+            }
+            
             // Move to next rail
             $rail += $direction;
-            
-            // Change direction at boundaries
-            if ($rail === $this->rails || $rail < 0) {
-                $direction *= -1;
-                $rail += 2 * $direction;
-            }
         }
         
         // Fill the fence with characters
@@ -99,14 +101,15 @@ class RailFenceCipher extends Component
         for ($i = 0; $i < $length; $i++) {
             $result .= $fence[$rail][$i];
             
+            // Change direction at boundaries
+            if ($rail === 0) {
+                $direction = 1;
+            } elseif ($rail === $this->rails - 1) {
+                $direction = -1;
+            }
+            
             // Move to next rail
             $rail += $direction;
-            
-            // Change direction at boundaries
-            if ($rail === $this->rails || $rail < 0) {
-                $direction *= -1;
-                $rail += 2 * $direction;
-            }
         }
         
         $this->result = $result;
